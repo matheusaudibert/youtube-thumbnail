@@ -29,7 +29,6 @@ async function atualizarReadme() {
     }
 
     await fs.writeFile(readmePath, readmeContent, "utf8");
-    console.log("😼 README commitado com sucesso.");
 
     await commitParaGithub();
   } catch (error) {
