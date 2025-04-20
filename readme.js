@@ -46,12 +46,10 @@ async function commitParaGithub() {
     try {
       await execPromise("git add readme.js");
     } catch (e) {
-      console.log("Nota: readme.js não foi alterado ou não existe");
+      console.log("erro");
     }
 
-    await execPromise(
-      `git commit -m "Atualização automática da thumbnail - ${dataHora}"`
-    );
+    await execPromise(`git commit -m "new thumbnial - ${dataHora}"`);
     await execPromise("git push");
     console.log("✨ Alterações enviadas para o GitHub com sucesso.");
   } catch (error) {
