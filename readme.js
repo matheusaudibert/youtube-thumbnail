@@ -54,7 +54,7 @@ async function commitParaGithub() {
       `git commit -m "Atualização automática da thumbnail - ${dataHora}"`
     );
     await execPromise("git push");
-    console.log("Alterações enviadas para o GitHub com sucesso.");
+    console.log("✨ Alterações enviadas para o GitHub com sucesso.");
   } catch (error) {
     console.error("Erro ao fazer commit para o GitHub:", error);
 
