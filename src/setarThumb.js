@@ -52,8 +52,7 @@ async function setThumbnail(comentarioModerado) {
         body: fs.createReadStream(CAMINHO_THUMBNAIL),
       },
     });
-
-    console.log("✅ Thumbnail atualizada com sucesso!");
+    console.log("🧩 Thumbnail definida com sucesso.");
   } catch (error) {
     console.error("❌ Erro ao definir a thumbnail:", error.message);
     if (error.response?.data) {

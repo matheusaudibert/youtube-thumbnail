@@ -40,7 +40,7 @@ Retorne apenas o comentário censurado, sem explicações ou observações adici
     );
 
     const json = await res.json();
-    console.log(json);
+
     const censurado = json.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
     console.log("🔍 Comentário censurado:", censurado);
     return censurado;

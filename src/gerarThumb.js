@@ -190,7 +190,7 @@ async function gerarImagemComentario(comentario) {
     const buffer = canvas.toBuffer("image/png");
     fs.writeFileSync("thumbnail.png", buffer);
 
-    console.log("✅ Miniatura gerada com sucesso!");
+    console.log("🎨 Miniatura gerada com sucesso!");
   } catch (erro) {
     console.error("❌ Erro ao gerar miniatura:", erro);
   }

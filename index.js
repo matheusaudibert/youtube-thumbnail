@@ -34,10 +34,6 @@ async function pegarComentario() {
 async function moderarComentario(comentario) {
   try {
     const comentarioProcessado = await processarComentario(comentario);
-    console.log(
-      "👨‍🔧 Comentário censurado:",
-      comentarioProcessado.textoComentario
-    );
     return comentarioProcessado;
   } catch (error) {
     console.error("❌ Erro ao moderar o comentário:", error.message);
@@ -48,11 +44,9 @@ async function moderarComentario(comentario) {
 async function gerarThumbnail(comentarioModerado) {
   try {
     await setThumbnail(comentarioModerado);
-    console.log("🖼️ Thumbnail definida com sucesso.");
 
     const { atualizarReadme } = require("./readme.js");
     await atualizarReadme();
-    console.log("📝 README atualizado com a nova thumbnail.");
   } catch (error) {
     console.error("❌ Erro ao definir a thumbnail:", error.message);
     throw error;
