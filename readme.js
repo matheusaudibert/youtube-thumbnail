@@ -49,7 +49,7 @@ async function commitParaGithub() {
       console.log("erro");
     }
 
-    await execPromise(`git commit -m "new thumbnial - ${dataHora}"`);
+    await execPromise(`git commit -m "new thumbnail - ${dataHora}"`);
     await execPromise("git push");
     console.log("✨ Alterações enviadas para o GitHub com sucesso.");
   } catch (error) {
