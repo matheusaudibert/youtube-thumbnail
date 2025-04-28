@@ -6,7 +6,7 @@ YoutubeThumbnail is a project that transforms the latest comment on a YouTube vi
 
 Access the video here:
 
-`[![Youtube Card]([![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/RcBNKG2X6jU?width=250&theme=github&max_title_lines=1&show_duration=false)](https://youtube.com/watch?v=RcBNKG2X6jU)](https://www.youtube.com/watch?v=RcBNKG2X6jU)
+[![YouTube Card](https://youtube-cards-0wtu.onrender.com/api/RcBNKG2X6jU?width=250&theme=github&max_title_lines=1&show_duration=false)](https://youtube.com/watch?v=RcBNKG2X6jU)](https://www.youtube.com/watch?v=RcBNKG2X6jU)
 
 ## 🎴 Last Thumbnail
 
