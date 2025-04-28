@@ -10,7 +10,7 @@ Access the video here:
 
 ## 🎴 Last Thumbnail
 
-![Latest Thumbnail](./thumbnail.pn)
+![Latest Thumbnail](./thumbnail.png)
 
 ## 🚀 Features
 
