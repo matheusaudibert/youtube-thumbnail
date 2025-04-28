@@ -33,6 +33,7 @@ async function pegarComentario() {
 
 async function moderarComentario(comentario) {
   try {
+    console.log("🔍 Moderando comentário e verificando imagem de perfil...");
     const comentarioProcessado = await processarComentario(comentario);
     return comentarioProcessado;
   } catch (error) {

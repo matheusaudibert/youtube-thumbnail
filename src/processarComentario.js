@@ -1,4 +1,5 @@
 const { gerarImagemComentario } = require("./gerarThumb");
+const { processarImagemPerfil } = require("./processarImagem");
 
 const API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = "models/gemini-1.5-flash";
@@ -52,12 +53,19 @@ Retorne apenas o comentário censurado, sem explicações ou observações adici
 }
 
 async function processarComentario(comentario) {
+  // Moderar o texto do comentário
   const comentarioModerado = await moderarComentario(
     comentario.textoComentario
   );
 
+  // Verificar a imagem de perfil
+  const imagemPerfilProcessada = await processarImagemPerfil(
+    comentario.imagemPerfilAutor
+  );
+
   if (comentarioModerado) {
     comentario.textoComentario = comentarioModerado;
+    comentario.imagemPerfilAutor = imagemPerfilProcessada;
     await gerarImagemComentario(comentario);
   } else {
     console.warn("GEMINI CABACOU");
