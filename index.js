@@ -46,7 +46,7 @@ async function gerarThumbnail(comentarioModerado) {
   try {
     await setThumbnail(comentarioModerado);
 
-    const { atualizarReadme } = require("./readme.js");
+    const { atualizarReadme } = require("./commit.js");
     await atualizarReadme();
   } catch (error) {
     console.error("❌ Erro ao definir a thumbnail:", error.message);
