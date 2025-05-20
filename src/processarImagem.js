@@ -55,7 +55,6 @@ async function analisarImagem(imagemUrl) {
       ?.trim()
       .toUpperCase();
 
-    console.log("🔍 Resultado da análise da imagem:", resultado);
     return resultado === "SIM";
   } catch (error) {
     console.error("❌ Erro ao analisar imagem:", error.message);

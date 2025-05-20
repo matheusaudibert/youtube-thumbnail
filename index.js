@@ -12,11 +12,13 @@ app.get("/", (req, res) => {
   res.send("server on");
 });
 
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log(`Servidor escutando na porta ${PORT}`);
+});
 
 async function pegarComentario() {
   try {
-    console.log("🔍 Buscando o último comentário...");
+    console.log("🤓 Buscando o último comentário...");
     const comentario = await obterUltimoComentario();
     if (comentario) {
       console.log("💭 Comentário encontrado:", comentario.textoComentario);
@@ -33,7 +35,6 @@ async function pegarComentario() {
 
 async function moderarComentario(comentario) {
   try {
-    console.log("🔍 Moderando comentário e verificando imagem de perfil...");
     const comentarioProcessado = await processarComentario(comentario);
     return comentarioProcessado;
   } catch (error) {
@@ -45,9 +46,6 @@ async function moderarComentario(comentario) {
 async function gerarThumbnail(comentarioModerado) {
   try {
     await setThumbnail(comentarioModerado);
-
-    const { atualizarReadme } = require("./commit.js");
-    await atualizarReadme();
   } catch (error) {
     console.error("❌ Erro ao definir a thumbnail:", error.message);
     throw error;
@@ -61,21 +59,12 @@ async function main() {
     if (comentario) {
       const comentarioModerado = await moderarComentario(comentario);
       await gerarThumbnail(comentarioModerado);
+      process.exit(1);
     }
   } catch (error) {
     console.error("❌ Erro no fluxo principal:", error.message);
+    process.exit(1);
   }
 }
 
-function iniciarTimerExecucao() {
-  const INTERVALO_MINUTOS = 15; // 14 deu erro yt fdp
-  const INTERVALO_MS = INTERVALO_MINUTOS * 60 * 1000;
-
-  main();
-
-  setInterval(() => {
-    console.log(`\n[${new Date().toLocaleString()}] Executando novamente...`);
-    main();
-  }, INTERVALO_MS);
-}
-iniciarTimerExecucao();
+main();

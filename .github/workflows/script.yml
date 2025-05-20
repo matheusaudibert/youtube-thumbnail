@@ -1,0 +1,41 @@
+name: Gerar Thumbnail e Commitar
+
+on:
+  schedule:
+    - cron: "*/20 * * * *" # A cada 20 minutos
+  workflow_dispatch:
+
+jobs:
+  gerar-thumbnail:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar script para gerar thumbnail
+        run: node index.js
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          OUTRA_VARIAVEL: ${{ secrets.OUTRA_VARIAVEL }}
+
+      - name: Verificar mudanças e commitar thumbnail
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add thumbnail.png
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança na thumbnail. Não será feito commit."
+          else
+            git commit -m "chore: atualizar thumbnail gerada automaticamente"
+            git push origin main
+          fi
