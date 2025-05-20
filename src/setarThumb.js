@@ -24,11 +24,13 @@ async function verificarEAtualizarToken() {
     const tokenInfo = oauth2Client.credentials;
 
     if (!tokenInfo.access_token || tokenInfo.expiry_date <= Date.now()) {
+      console.log("🔄 Token expirado ou ausente. Renovando...");
       const { credentials } = await oauth2Client.refreshAccessToken();
       oauth2Client.setCredentials(credentials);
+      console.log("✅ Token renovado com sucesso!");
     }
   } catch (error) {
-    console.error("Erro ao renovar o token:", error.message);
+    console.error("❌ Erro ao renovar o token:", error.message);
     throw error;
   }
 }
