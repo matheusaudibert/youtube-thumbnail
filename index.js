@@ -59,7 +59,9 @@ async function main() {
     if (comentario) {
       const comentarioModerado = await moderarComentario(comentario);
       await gerarThumbnail(comentarioModerado);
-      process.exit(1);
+      process.exit(0);
+    } else {
+      process.exit(0);
     }
   } catch (error) {
     console.error("❌ Erro no fluxo principal:", error.message);
