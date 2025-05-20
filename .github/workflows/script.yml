@@ -36,12 +36,12 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+          
           if [[ -f thumbnail.png ]]; then
             git add thumbnail.png
             git commit -m "chore: atualizar thumbnail [skip ci]"
             git push origin main
           else
             echo "Arquivo thumbnail.png não encontrado"
-            exit 0
           fi
+        continue-on-error: true
