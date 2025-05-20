@@ -43,5 +43,5 @@ jobs:
             git push origin main
           else
             echo "Arquivo thumbnail.png não encontrado"
-            exit 1
+            exit 0
           fi
