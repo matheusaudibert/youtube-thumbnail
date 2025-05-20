@@ -2,7 +2,7 @@ name: Gerar Thumbnail e Commitar
 
 on:
   schedule:
-    - cron: "*/20 * * * *" # A cada 20 minutos
+    - cron: "*/20 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -24,18 +24,24 @@ jobs:
       - name: Rodar script para gerar thumbnail
         run: node index.js
         env:
-          YT_API_KEY: ${{ secrets.YT_API_KEY }}
-          OUTRA_VARIAVEL: ${{ secrets.OUTRA_VARIAVEL }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_VIDEO_ID: ${{ secrets.YOUTUBE_VIDEO_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_ACCESS_TOKEN: ${{ secrets.GOOGLE_ACCESS_TOKEN }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
 
       - name: Verificar mudanças e commitar thumbnail
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add thumbnail.png
-          if git diff --cached --quiet; then
-            echo "Nenhuma mudança na thumbnail. Não será feito commit."
-          else
-            git commit -m "chore: atualizar thumbnail gerada automaticamente"
+          if [[ -f thumbnail.png ]]; then
+            git add thumbnail.png
+            git commit -m "chore: atualizar thumbnail [skip ci]"
             git push origin main
+          else
+            echo "Arquivo thumbnail.png não encontrado"
+            exit 1
           fi
