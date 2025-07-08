@@ -1,5 +1,7 @@
 # Environment variables
 .env
+.env.local
+.env.production
 
 # Dependencies
 /node_modules
@@ -12,6 +14,8 @@ token.json
 *.tokens
 oauth_token.json
 credentials.json
+client_secret*.json
+service-account*.json
 
 # Logs
 *.log
@@ -20,3 +24,13 @@ logs/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/
