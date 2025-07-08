@@ -1,0 +1,22 @@
+# Environment variables
+.env
+
+# Dependencies
+/node_modules
+
+# Token files (OAuth, API keys, etc.)
+tokens.json
+token.js
+token.json
+*.token
+*.tokens
+oauth_token.json
+credentials.json
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+Thumbs.db

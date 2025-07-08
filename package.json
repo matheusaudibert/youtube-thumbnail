@@ -1,0 +1,17 @@
+{
+  "name": "youtube-last-comment",
+  "version": "1.0.0",
+  "description": "Script para buscar o último comentário de um vídeo do YouTube",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "canvas": "^3.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^5.1.0",
+    "googleapis": "^148.0.0",
+    "node-fetch": "^2.6.1",
+    "open": "^10.1.1"
+  }
+}
