@@ -2,7 +2,7 @@ const { gerarImagemComentario } = require("./gerarThumb");
 const { processarImagemPerfil } = require("./processarImagem");
 
 const API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = "models/gemini-1.5-flash";
+const MODEL = "models/gemini-2.5-flash";
 
 async function moderarComentario(texto) {
   const prompt = `

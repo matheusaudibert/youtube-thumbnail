@@ -14,6 +14,7 @@ token.json
 *.tokens
 oauth_token.json
 credentials.json
+auth_gen.js
 client_secret*.json
 service-account*.json
 
